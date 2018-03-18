@@ -1,0 +1,121 @@
+﻿<Window x:Class="PGSRecruitmentTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PGSRecruitmentTask"
+        mc:Ignorable="d"
+        Title="Zadanie PGS Sebastian Jantos" Height="350" Width="525"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        UseLayoutRounding="true">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Name="mainTabControl" TabStripPlacement="Left" SelectionChanged="mainTabControl_SelectionChanged">
+
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Padding" Value="5" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem x:Name="FirstNameTab" Header="Imię">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,20">Podaj imię</Label>
+                    <TextBox Name="textboxFirstName" Grid.Row="1" TextAlignment="Center" TextChanged="textboxFirstName_TextChanged" KeyDown="enter_KeyDown" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="LastNameTab" Header="Nazwisko" IsEnabled="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,20">Podaj nazwisko</Label>
+                    <TextBox Name="textboxLastName" Grid.Row="1" TextAlignment="Center" TextChanged="textboxLastName_TextChanged" KeyDown="enter_KeyDown" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="AddressTab" Header="Adres" IsEnabled="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,20">Podaj adres</Label>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0">Ulica</Label>
+                        <Label Grid.Column="1">Numer</Label>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="textboxStreet" Grid.Column="0" Margin="5" TextChanged="addressTextBoxes_TextChanged" />
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="textboxHouseNumber" Grid.Column="0" Margin="5" TextChanged="addressTextBoxes_TextChanged"></TextBox>
+                            <Label Grid.Column="1">/</Label>
+                            <TextBox Name="textboxFlatNumber" Grid.Column="2" Margin="5" TextChanged="addressTextBoxes_TextChanged"></TextBox>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0">Miasto</Label>
+                        <Label Grid.Column="1">Kod pocztowy</Label>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="textboxCity" Grid.Column="0" Margin="5" TextChanged="addressTextBoxes_TextChanged"></TextBox>
+                        <TextBox Name="textboxZipCode" Grid.Column="1" Margin="5" TextChanged="addressTextBoxes_TextChanged" KeyDown="enter_KeyDown"></TextBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="PhoneNumberTab" Header="Numer telefonu" IsEnabled="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,20">Podaj numer telefonu</Label>
+                    <TextBox Name="textboxPhoneNumber" Grid.Row="1" TextAlignment="Center" TextChanged="textboxPhoneNumber_TextChanged" KeyDown="enter_KeyDown" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="SummaryTab" Header="Podsumowanie" IsEnabled="False">
+                <Label Name="labelSummary" HorizontalAlignment="Center"></Label>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Name="buttonPrevious" Grid.Column="0" Height="25" Width="100" Margin="10,10,0,10" HorizontalAlignment="Left" Click="buttonPrevious_Click" Visibility="Hidden">Wstecz</Button>
+            <Button x:Name="buttonNext" Grid.Column="1" Height="25" Width="100" Margin="0,10,10,10" HorizontalAlignment="Right" Click="buttonNext_Click" IsEnabled="False" Content="Błędne dane"/>
+        </Grid>
+    </Grid>
+</Window>
